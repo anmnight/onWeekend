@@ -1,0 +1,90 @@
+{
+  "version": "2.7",
+  "children": [],
+  "variables": {
+    "--text-tertiary": {
+      "type": "color",
+      "value": "#98989d"
+    },
+    "--text-secondary": {
+      "type": "color",
+      "value": "#ebebf5"
+    },
+    "--text-primary": {
+      "type": "color",
+      "value": "#ffffff"
+    },
+    "--surface3": {
+      "type": "color",
+      "value": "#3a3a3c"
+    },
+    "--surface2": {
+      "type": "color",
+      "value": "#2c2c2e"
+    },
+    "--surface": {
+      "type": "color",
+      "value": "#1c1c1e"
+    },
+    "--spacing-xs": {
+      "type": "number",
+      "value": 4
+    },
+    "--spacing-xl": {
+      "type": "number",
+      "value": 32
+    },
+    "--spacing-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "--spacing-md": {
+      "type": "number",
+      "value": 16
+    },
+    "--spacing-lg": {
+      "type": "number",
+      "value": 24
+    },
+    "--radius-sm": {
+      "type": "number",
+      "value": 6
+    },
+    "--radius-md": {
+      "type": "number",
+      "value": 12
+    },
+    "--radius-lg": {
+      "type": "number",
+      "value": 18
+    },
+    "--font-primary": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "--font-mono": {
+      "type": "string",
+      "value": "JetBrains Mono"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#38383a"
+    },
+    "--background": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "--accent-red": {
+      "type": "color",
+      "value": "#ff375f"
+    },
+    "--accent-green": {
+      "type": "color",
+      "value": "#30d158"
+    },
+    "--accent": {
+      "type": "color",
+      "value": "#0a84ff"
+    }
+  }
+}
