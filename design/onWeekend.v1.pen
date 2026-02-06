@@ -1,90 +1,708 @@
 {
   "version": "2.7",
-  "children": [],
+  "children": [
+    {
+      "type": "frame",
+      "id": "6KtPK",
+      "x": -726,
+      "y": -59,
+      "name": "Login Page",
+      "clip": true,
+      "width": 402,
+      "height": 802,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "c1a9R",
+          "name": "loginBg",
+          "width": "fill_container",
+          "height": 752,
+          "layout": "vertical",
+          "gap": 24,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "wpCMo",
+              "name": "logoContainer",
+              "width": 120,
+              "height": 120,
+              "fill": "$--surface",
+              "cornerRadius": 60,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "7AmGp",
+                  "name": "logoIcon",
+                  "content": "🛒",
+                  "fontFamily": "Inter",
+                  "fontSize": 56,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "8nyK7",
+              "name": "appName",
+              "fill": "$--text-primary",
+              "content": "onWeekend",
+              "fontFamily": "Inter",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "2QVfM",
+              "name": "tagline",
+              "fill": "$--text-secondary",
+              "content": "商品录入与评价管理",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Pv1uK",
+              "name": "loginButton",
+              "width": 270,
+              "height": 56,
+              "fill": "$--accent",
+              "cornerRadius": 28,
+              "gap": 12,
+              "padding": 16,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ApSLi",
+                  "name": "wechatIcon",
+                  "content": "💬",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "cOvbc",
+                  "name": "wechatText",
+                  "fill": "#FFFFFF",
+                  "content": "微信授权登录",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "semibold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "bF4bD",
+              "name": "footerText",
+              "fill": "$--text-tertiary",
+              "content": "登录即表示同意用户协议和隐私政策",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "yWsUm",
+      "x": -169,
+      "y": -59,
+      "name": "Scan Page",
+      "clip": true,
+      "width": 402,
+      "height": 802,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "iwlGV",
+          "name": "scanHeader",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "RVkkx",
+              "name": "scanTitle",
+              "fill": "$--text-primary",
+              "content": "扫描商品",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "2hBcf",
+              "name": "scanSubtitle",
+              "fill": "$--text-secondary",
+              "content": "扫描商品条形码或二维码",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kQCZT",
+          "name": "scanFrameContainer",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Sxppq",
+              "name": "scanArea",
+              "width": "fill_container",
+              "height": 280,
+              "fill": "$--surface",
+              "cornerRadius": 20,
+              "layout": "vertical",
+              "gap": 16,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gkrQc",
+                  "name": "scanIcon",
+                  "content": "📷",
+                  "fontFamily": "Inter",
+                  "fontSize": 64,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "LrdJ9",
+                  "name": "scanHint",
+                  "fill": "$--text-secondary",
+                  "content": "将商品条码放入框内",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ux1re",
+              "name": "scanButton",
+              "width": "fill_container",
+              "height": 56,
+              "fill": "$--accent",
+              "cornerRadius": 28,
+              "gap": 12,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zUp6r",
+                  "name": "scanButtonIcon",
+                  "content": "🔍",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "HOOOB",
+                  "name": "scanButtonText",
+                  "fill": "#FFFFFF",
+                  "content": "立即扫描",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "semibold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Pnrzh",
+              "name": "manualInputSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nYyMH",
+                  "name": "manualInputLabel",
+                  "fill": "$--text-secondary",
+                  "content": "或手动输入条码",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "frame",
+                  "id": "k0lvm",
+                  "name": "inputContainer",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$--surface",
+                  "cornerRadius": 12,
+                  "gap": 12,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xN8fR",
+                      "name": "barcodeIcon",
+                      "content": "⌨️",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FBMlD",
+                      "name": "barcodeInput",
+                      "fill": "$--text-tertiary",
+                      "content": "输入商品条码...",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "s5H98",
+      "x": 397,
+      "y": -59,
+      "name": "Product Page",
+      "clip": true,
+      "width": 402,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "BNcvE",
+          "name": "productHeader",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "SQba5",
+              "name": "backButton",
+              "width": "fill_container",
+              "height": 44,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GbYM6",
+                  "name": "backIcon",
+                  "fill": "$--text-primary",
+                  "content": "←",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "HtJ9I",
+                  "name": "backText",
+                  "fill": "$--text-primary",
+                  "content": "返回",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ugky5",
+          "name": "productImageSection",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "nD6TY",
+              "name": "productImage",
+              "width": "fill_container",
+              "height": 220,
+              "fill": "$--surface",
+              "cornerRadius": 20,
+              "layout": "vertical",
+              "gap": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uDEyw",
+                  "name": "imagePlaceholder",
+                  "content": "📷",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "7I9p9",
+                  "name": "imageHint",
+                  "fill": "$--text-secondary",
+                  "content": "点击上传商品图片",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dpt4O",
+          "name": "productFormSection",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Kwaug",
+              "name": "formField",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IcsLN",
+                  "name": "fieldLabel",
+                  "fill": "$--text-secondary",
+                  "content": "商品名称",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "frame",
+                  "id": "GqeXx",
+                  "name": "inputFrame",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$--surface",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9E6tc",
+                      "name": "inputText",
+                      "fill": "$--text-tertiary",
+                      "content": "输入商品名称",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GwxLD",
+              "name": "barcodeField",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lHjej",
+                  "name": "barcodeLabel",
+                  "fill": "$--text-secondary",
+                  "content": "商品条码",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "frame",
+                  "id": "9LKg0",
+                  "name": "barcodeInputFrame",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$--surface",
+                  "cornerRadius": 12,
+                  "gap": 12,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HTmh2",
+                      "name": "barcodeText",
+                      "fill": "$--text-primary",
+                      "content": "6901234567890",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zMsNr",
+                      "name": "scanIcon",
+                      "content": "📷",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "975eH",
+          "name": "ratingSection",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "bYXSz",
+              "name": "ratingLabel",
+              "fill": "$--text-secondary",
+              "content": "我的评价",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "medium"
+            },
+            {
+              "type": "frame",
+              "id": "CAJ6Y",
+              "name": "starsContainer",
+              "width": "fill_container",
+              "height": 48,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ifJug",
+                  "name": "star",
+                  "content": "⭐",
+                  "fontFamily": "Inter",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "DrxI7",
+                  "name": "starActive",
+                  "content": "⭐",
+                  "fontFamily": "Inter",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v1RIE",
+              "name": "commentInput",
+              "width": "fill_container",
+              "height": 100,
+              "fill": "$--surface",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZGCk0",
+                  "name": "commentPlaceholder",
+                  "fill": "$--text-tertiary",
+                  "content": "写下你的评价...",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "s4Cwi",
+          "name": "actionButtons",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "gwQiI",
+              "name": "saveButton",
+              "width": "fill_container",
+              "height": 56,
+              "fill": "$--accent-green",
+              "cornerRadius": 28,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6ja3k",
+                  "name": "saveText",
+                  "fill": "#000000",
+                  "content": "保存评价",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "semibold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Gg9R1",
+              "name": "addProductButton",
+              "width": "fill_container",
+              "height": 56,
+              "fill": "$--accent",
+              "cornerRadius": 28,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZIuaX",
+                  "name": "addProductText",
+                  "fill": "#FFFFFF",
+                  "content": "添加商品",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "semibold"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "variables": {
-    "--text-tertiary": {
+    "--accent": {
       "type": "color",
-      "value": "#98989d"
+      "value": "#6366F1"
     },
-    "--text-secondary": {
+    "--accent-green": {
       "type": "color",
-      "value": "#ebebf5"
+      "value": "#32D583"
     },
-    "--text-primary": {
+    "--accent-red": {
       "type": "color",
-      "value": "#ffffff"
+      "value": "#E85A4F"
     },
-    "--surface3": {
+    "--background": {
       "type": "color",
-      "value": "#3a3a3c"
+      "value": "#0B0B0E"
     },
-    "--surface2": {
+    "--border": {
       "type": "color",
-      "value": "#2c2c2e"
+      "value": "#2A2A2E"
     },
-    "--surface": {
-      "type": "color",
-      "value": "#1c1c1e"
-    },
-    "--spacing-xs": {
+    "--radius-lg": {
       "type": "number",
-      "value": 4
-    },
-    "--spacing-xl": {
-      "type": "number",
-      "value": 32
-    },
-    "--spacing-sm": {
-      "type": "number",
-      "value": 8
-    },
-    "--spacing-md": {
-      "type": "number",
-      "value": 16
-    },
-    "--spacing-lg": {
-      "type": "number",
-      "value": 24
-    },
-    "--radius-sm": {
-      "type": "number",
-      "value": 6
+      "value": 20
     },
     "--radius-md": {
       "type": "number",
       "value": 12
     },
-    "--radius-lg": {
+    "--radius-sm": {
       "type": "number",
-      "value": 18
+      "value": 8
     },
-    "--font-primary": {
-      "type": "string",
-      "value": "Inter"
+    "--spacing-lg": {
+      "type": "number",
+      "value": 24
     },
-    "--font-mono": {
-      "type": "string",
-      "value": "JetBrains Mono"
+    "--spacing-md": {
+      "type": "number",
+      "value": 16
     },
-    "--border": {
+    "--spacing-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "--spacing-xl": {
+      "type": "number",
+      "value": 32
+    },
+    "--spacing-xs": {
+      "type": "number",
+      "value": 4
+    },
+    "--surface": {
       "type": "color",
-      "value": "#38383a"
+      "value": "#16161A"
     },
-    "--background": {
+    "--surface2": {
       "type": "color",
-      "value": "#000000"
+      "value": "#1A1A1E"
     },
-    "--accent-red": {
+    "--surface3": {
       "type": "color",
-      "value": "#ff375f"
+      "value": "#3A3A40"
     },
-    "--accent-green": {
+    "--text-primary": {
       "type": "color",
-      "value": "#30d158"
+      "value": "#FAFAF9"
     },
-    "--accent": {
+    "--text-secondary": {
       "type": "color",
-      "value": "#0a84ff"
+      "value": "#6B6B70"
+    },
+    "--text-tertiary": {
+      "type": "color",
+      "value": "#4A4A50"
     }
   }
 }
