@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="add-form bg-surface" wx:if="{{showAddForm}}">
+    <view class="form-title text-primary">添加品牌</view>
+    <input class="form-input" placeholder="条码" value="{{newBarcode}}" disabled />
+    <input class="form-input" placeholder="品牌名称" bindinput="onBrandNameInput" value="{{newBrandName}}" />
+    <view class="form-buttons">
+      <button class="btn-primary" bindtap="confirmAddBrand" disabled="{{!newBrandName}}">保存</button>
+      <button class="btn-secondary" bindtap="cancelAdd">取消</button>
+    </view>
+  </view>
+
+  <view class="brand-list">
+    <view class="list-header">
+      <text class="text-secondary">已添加品牌 ({{brands.length}})</text>
+      <button class="add-btn" bindtap="showAddForm">+ 添加</button>
+    </view>
+
+    <view class="brand-item bg-surface" wx:for="{{brands}}" wx:key="barcode">
+      <view class="brand-info">
+        <text class="text-primary brand-name">{{item.brandName}}</text>
+        <text class="text-secondary barcode">{{item.barcode}}</text>
+      </view>
+      <view class="delete-btn" bindtap="deleteBrand" data-barcode="{{item.barcode}}">
+        <text class="text-danger">删除</text>
+      </view>
+    </view>
+
+    <view class="empty-tip text-secondary" wx:if="{{brands.length === 0}}">
+      暂无品牌，点击上方添加
+    </view>
+  </view>
+</view>

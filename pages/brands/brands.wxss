@@ -1,0 +1,85 @@
+.container {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.add-form {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.form-input {
+  background-color: #2c2c2e;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.add-btn {
+  color: #0a84ff;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.brand-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.barcode {
+  font-size: 12px;
+}
+
+.delete-btn {
+  padding: 8px 16px;
+}
+
+.text-danger {
+  color: #ff3b30;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 40px;
+  font-size: 14px;
+}
