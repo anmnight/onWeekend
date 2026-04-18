@@ -1,0 +1,14 @@
+{
+  "description": "吸烟间隔记录小程序",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "bundleUsage": false,
+    "urlCheck": false
+  },
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "smoking-tracker",
+  "condition": {}
+}
