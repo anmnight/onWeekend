@@ -1,0 +1,73 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.scan-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.scan-tip {
+  color: #8e8e93;
+  font-size: 16px;
+}
+
+.confirm-area,
+.no-match {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  width: 100%;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.barcode {
+  font-size: 14px;
+}
+
+.confirm-tip {
+  font-size: 16px;
+}
+
+.confirm-buttons,
+.no-match-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 200px;
+}
+
+.btn-secondary {
+  background-color: #2c2c2e;
+  color: #ffffff;
+  border-radius: 24px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.no-match-text {
+  font-size: 18px;
+}
