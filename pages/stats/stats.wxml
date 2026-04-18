@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="section">
+    <view class="section-title text-secondary">今日</view>
+    <view class="today-card bg-surface">
+      <view class="today-count">{{todayCount}} <text class="text-secondary">根</text></view>
+      <view class="today-detail text-secondary">
+        最后吸烟 {{lastSmokingTime}} · 平均间隔 {{avgInterval}}
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title text-secondary">本周趋势</view>
+    <view class="week-card bg-surface">
+      <view class="week-chart">
+        <view class="chart-bar" wx:for="{{weekData}}" wx:key="date">
+          <view class="bar-fill" style="height: {{item.percent}}%"></view>
+          <view class="bar-label text-secondary">{{item.day}}</view>
+          <view class="bar-count text-primary">{{item.count}}</view>
+        </view>
+      </view>
+      <view class="week-avg text-secondary">
+        本周平均 {{weekAvg}} 根/天
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title text-secondary">历史记录</view>
+    <view class="history-list">
+      <view class="history-item bg-surface" wx:for="{{historyData}}" wx:key="date">
+        <text class="history-date text-primary">{{item.date}}</text>
+        <text class="history-count text-primary">{{item.count}} 根</text>
+      </view>
+      <view class="empty-tip text-secondary" wx:if="{{historyData.length === 0}}">
+        暂无历史记录
+      </view>
+    </view>
+  </view>
+</view>
