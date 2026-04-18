@@ -1,0 +1,64 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats-card {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.stats-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.stats-count {
+  font-size: 64px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.stats-unit {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-item text {
+  font-size: 14px;
+}
+
+.stats-item .text-primary {
+  margin-top: 4px;
+}
+
+.action-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.manual-btn,
+.scan-btn {
+  width: 200px;
+}
+
+.brand-link {
+  padding: 16px;
+}

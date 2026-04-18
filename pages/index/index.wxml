@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="stats-card bg-surface">
+    <view class="stats-title text-secondary">今日已吸</view>
+    <view class="stats-count">{{todayCount}} <text class="stats-unit">根</text></view>
+    <view class="stats-row">
+      <view class="stats-item">
+        <text class="text-secondary">最后吸烟</text>
+        <text class="text-primary">{{lastSmokingTime}}</text>
+      </view>
+      <view class="stats-item">
+        <text class="text-secondary">平均间隔</text>
+        <text class="text-primary">{{avgInterval}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-area">
+    <button class="btn-primary manual-btn" bindtap="handleManualRecord">
+      手动记录
+    </button>
+    <button class="btn-primary scan-btn" bindtap="handleScan">
+      扫码记录
+    </button>
+  </view>
+
+  <view class="brand-link" bindtap="goToBrands">
+    <text class="text-accent">品牌管理</text>
+  </view>
+</view>
