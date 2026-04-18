@@ -1,10 +1,25 @@
 # TabBar Icons
 
-需要添加以下图标文件（81x81 PNG格式）：
+## Lucide Icons (SVG格式)
 
-- `home.png` - 首页未选中图标
-- `home-active.png` - 首页选中图标
-- `stats.png` - 统计未选中图标
-- `stats-active.png` - 统计选中图标
+已添加以下SVG图标文件：
 
-推荐使用扁平化图标风格，与苹果深色系主题一致。
+- `home.svg` - 首页未选中图标 (#8e8e93)
+- `home-active.svg` - 首页选中图标 (#0a84ff)
+- `stats.svg` - 统计未选中图标 (#8e8e93)
+- `stats-active.svg` - 统计选中图标 (#0a84ff)
+
+## 转换为PNG
+
+微信小程序tabBar仅支持PNG格式。需要转换：
+
+1. **在线转换**: https://cloudconvert.com/svg-to-png
+2. **Figma**: 直接导入SVG，导出81x81 PNG
+3. **Sketch**: 导入SVG，导出81x81 PNG
+
+**推荐尺寸**: 81x81 像素 (或 48x48 @2x)
+
+## 图标来源
+
+- 首页图标: Lucide `house`
+- 统计图标: Lucide `bar-chart-2` (柱状图变体)
