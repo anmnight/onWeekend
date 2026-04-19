@@ -63,7 +63,10 @@ Page({
   },
 
   confirmBarcode() {
-    if (!this.data.tempBarcode) return;
+    if (!this.data.tempBarcode) {
+      wx.showToast({ title: '请输入条码', icon: 'none' });
+      return;
+    }
     this.setData({ showManual: false, showBrandForm: true });
   },
 
@@ -93,9 +96,20 @@ Page({
 
   saveBrand() {
     const { tempBarcode, tempBrandName, tempBgImage } = this.data;
-    if (!tempBrandName) return;
+    if (!tempBrandName) {
+      wx.showToast({ title: '请输入品牌名', icon: 'none' });
+      return;
+    }
+    if (!tempBarcode) {
+      wx.showToast({ title: '请输入条码', icon: 'none' });
+      return;
+    }
 
-    storage.addBrand(tempBarcode, tempBrandName, tempBgImage);
+    const success = storage.addBrand(tempBarcode, tempBrandName, tempBgImage);
+    if (!success) {
+      wx.showToast({ title: '品牌已存在', icon: 'none' });
+      return;
+    }
 
     this.setData({
       showBrandForm: false,

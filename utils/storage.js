@@ -34,8 +34,12 @@ function findBrandByBarcode(barcode) {
  */
 function addBrand(barcode, brandName, bgImage) {
   const brands = getBrands();
+  if (brands.some(b => b.barcode === barcode)) {
+    return false;
+  }
   brands.push({ barcode, brandName, bgImage: bgImage || '' });
   wx.setStorageSync('brands', brands);
+  return true;
 }
 
 /**
@@ -46,8 +50,18 @@ function deleteBrand(barcode) {
   const brands = getBrands();
   const index = brands.findIndex(b => b.barcode === barcode);
   if (index > -1) {
+    const brandName = brands[index].brandName;
     brands.splice(index, 1);
     wx.setStorageSync('brands', brands);
+
+    const records = getRecords();
+    records.forEach(r => {
+      if (r.brandName === brandName) {
+        r.brandName = '未知品牌';
+        r.brandId = '';
+      }
+    });
+    wx.setStorageSync('records', records);
   }
 }
 

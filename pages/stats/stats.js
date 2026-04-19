@@ -88,7 +88,7 @@ Page({
       day: data.day,
       count: data.count,
       percent: (data.count / maxCount) * 100,
-      brands: data.brands
+      brands: Object.entries(data.brands).map(([name, count]) => ({ name, count }))
     }));
 
     const weekAvg = weekRecords.length > 0
@@ -122,7 +122,7 @@ Page({
       .map(([date, data]) => ({
         date,
         count: data.count,
-        brands: data.brands
+        brands: Object.entries(data.brands).map(([name, count]) => ({ name, count }))
       }))
       .slice(0, 7);
 

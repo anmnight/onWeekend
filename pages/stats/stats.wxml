@@ -9,6 +9,13 @@
           <view class="bar-count text-primary">{{item.count}}</view>
         </view>
       </view>
+      <view class="week-brands">
+        <view class="week-brand-item" wx:for="{{weekData}}" wx:key="date">
+          <view class="brand-tag text-secondary" wx:for="{{item.brands}}" wx:for-item="brand" wx:key="name">
+            {{brand.name}}:{{brand.count}}
+          </view>
+        </view>
+      </view>
       <view class="week-avg text-secondary">
         本周平均 {{weekAvg}} 根/天
       </view>
