@@ -3,6 +3,7 @@ const storage = require('../../utils/storage.js');
 Page({
   data: {
     todayCount: 0,
+    todayBrands: [],
     lastSmokingTime: '--:--',
     avgInterval: '--',
     weekData: [],
@@ -23,6 +24,15 @@ Page({
   updateTodayStats() {
     const todayRecords = storage.getTodayRecords();
     const count = todayRecords.length;
+
+    const brandMap = {};
+    todayRecords.forEach(r => {
+      if (!brandMap[r.brandName]) {
+        brandMap[r.brandName] = 0;
+      }
+      brandMap[r.brandName]++;
+    });
+    const todayBrands = Object.entries(brandMap).map(([name, cnt]) => ({ name, count: cnt }));
 
     let lastTime = '--:--';
     let avgInterval = '--';
@@ -46,6 +56,7 @@ Page({
 
     this.setData({
       todayCount: count,
+      todayBrands,
       lastSmokingTime: lastTime,
       avgInterval: avgInterval
     });
@@ -60,9 +71,14 @@ Page({
       const date = new Date(r.timestamp);
       const dayKey = date.toDateString();
       if (!dayMap[dayKey]) {
-        dayMap[dayKey] = { count: 0, day: dayNames[date.getDay()] };
+        dayMap[dayKey] = { count: 0, day: dayNames[date.getDay()], brands: {} };
       }
       dayMap[dayKey].count++;
+      const brandName = r.brandName || '未知品牌';
+      if (!dayMap[dayKey].brands[brandName]) {
+        dayMap[dayKey].brands[brandName] = 0;
+      }
+      dayMap[dayKey].brands[brandName]++;
     });
 
     const maxCount = Math.max(...Object.values(dayMap).map(d => d.count), 1);
@@ -71,7 +87,8 @@ Page({
       date: dateStr,
       day: data.day,
       count: data.count,
-      percent: (data.count / maxCount) * 100
+      percent: (data.count / maxCount) * 100,
+      brands: data.brands
     }));
 
     const weekAvg = weekRecords.length > 0
@@ -89,15 +106,24 @@ Page({
       const date = new Date(r.timestamp);
       const dateKey = `${date.getMonth() + 1}月${date.getDate()}日`;
       if (!dayMap[dateKey]) {
-        dayMap[dateKey] = 0;
+        dayMap[dateKey] = { count: 0, brands: {} };
       }
-      dayMap[dateKey]++;
+      dayMap[dateKey].count++;
+      const brandName = r.brandName || '未知品牌';
+      if (!dayMap[dateKey].brands[brandName]) {
+        dayMap[dateKey].brands[brandName] = 0;
+      }
+      dayMap[dateKey].brands[brandName]++;
     });
 
     const today = new Date().toDateString();
     const historyData = Object.entries(dayMap)
       .filter(([dateStr]) => dateStr !== today)
-      .map(([date, count]) => ({ date, count }))
+      .map(([date, data]) => ({
+        date,
+        count: data.count,
+        brands: data.brands
+      }))
       .slice(0, 7);
 
     this.setData({ historyData });

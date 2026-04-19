@@ -2,86 +2,46 @@ const storage = require('../../utils/storage.js');
 
 Page({
   data: {
-    scanning: false,
-    showConfirm: false,
-    showNoMatch: false,
-    matchedBrand: null,
     currentBarcode: ''
   },
 
-  handleScan() {
-    this.setData({ scanning: true });
+  onLoad() {
+    this.startScan();
+  },
 
+  startScan() {
     wx.scanCode({
       success: (res) => {
-        this.setData({ scanning: false });
         this.handleScanResult(res.result);
       },
       fail: (err) => {
-        this.setData({ scanning: false });
-        if (err.errMsg.includes('cancel')) {
+        wx.showToast({
+          title: '扫描失败',
+          icon: 'none'
+        });
+        setTimeout(() => {
           wx.navigateBack();
-        } else {
-          wx.showToast({
-            title: '扫描失败',
-            icon: 'none'
-          });
-        }
+        }, 1500);
       }
     });
   },
 
   handleScanResult(barcode) {
     const brand = storage.findBrandByBarcode(barcode);
+    const brandName = brand ? brand.brandName : '未知品牌';
+    const brandId = brand ? brand.barcode : '';
 
-    if (brand) {
-      this.setData({
-        showConfirm: true,
-        matchedBrand: brand,
-        currentBarcode: barcode
-      });
-    } else {
-      this.setData({
-        showNoMatch: true,
-        currentBarcode: barcode
-      });
+    storage.addRecord({
+      brandId: brandId,
+      brandName: brandName,
+      type: 'scan'
+    });
+
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2];
+    if (prevPage && prevPage.updateTodayStats) {
+      prevPage.updateTodayStats();
     }
-  },
-
-  confirmRecord() {
-    const { matchedBrand } = this.data;
-    storage.addRecord({
-      brandId: matchedBrand.barcode,
-      brandName: matchedBrand.brandName,
-      type: 'scan'
-    });
-
-    wx.showToast({
-      title: '已记录',
-      icon: 'success'
-    });
-
-    setTimeout(() => {
-      wx.navigateBack();
-    }, 1000);
-  },
-
-  cancelScan() {
-    wx.navigateBack();
-  },
-
-  goToAddBrand() {
-    wx.navigateTo({
-      url: `/pages/brands/brands?barcode=${this.data.currentBarcode}&action=add`
-    });
-  },
-
-  recordAsUnknown() {
-    storage.addRecord({
-      brandId: '',
-      brandName: '未知品牌',
-      type: 'scan'
-    });
 
     wx.showToast({
       title: '已记录',

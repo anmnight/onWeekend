@@ -23,7 +23,27 @@
     </button>
   </view>
 
-  <view class="brand-link" bindtap="goToBrands">
-    <text class="text-accent">品牌管理</text>
+  <view class="brand-picker-modal" wx:if="{{showBrandPicker}}" catchtap="closeBrandPicker">
+    <view class="brand-picker-content" catchtap="stopPropagation">
+      <view class="picker-header">
+        <text class="text-primary">选择品牌</text>
+        <view class="close-btn" bindtap="closeBrandPicker">×</view>
+      </view>
+      <view class="brand-list">
+        <view class="brand-item bg-surface {{selectedBrand.barcode === item.barcode ? 'selected' : ''}}"
+              wx:for="{{brands}}"
+              wx:key="barcode"
+              bindtap="selectBrand"
+              data-brand="{{item}}">
+          <text class="text-primary">{{item.brandName}}</text>
+        </view>
+        <view class="empty-tip text-secondary" wx:if="{{brands.length === 0}}">
+          暂无品牌，请先添加
+        </view>
+      </view>
+      <button class="btn-primary confirm-btn" bindtap="confirmRecord" disabled="{{!selectedBrand}}">
+        确认记录
+      </button>
+    </view>
   </view>
 </view>

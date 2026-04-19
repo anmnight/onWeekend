@@ -29,6 +29,24 @@
   font-size: 14px;
 }
 
+.brand-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.brand-tag {
+  background-color: #2c2c2e;
+  padding: 6px 12px;
+  border-radius: 16px;
+}
+
+.brand-tag text {
+  font-size: 13px;
+}
+
 .week-card {
   padding: 24px;
 }
@@ -72,11 +90,15 @@
 }
 
 .history-item {
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.history-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .history-date {
@@ -85,6 +107,16 @@
 
 .history-count {
   font-size: 16px;
+}
+
+.history-brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.brand-text {
+  font-size: 12px;
 }
 
 .empty-tip {

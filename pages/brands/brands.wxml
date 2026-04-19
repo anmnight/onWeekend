@@ -1,32 +1,86 @@
 <view class="container">
-  <view class="add-form bg-surface" wx:if="{{showAddForm}}">
-    <view class="form-title text-primary">添加品牌</view>
-    <input class="form-input" placeholder="条码" value="{{newBarcode}}" disabled />
-    <input class="form-input" placeholder="品牌名称" bindinput="onBrandNameInput" value="{{newBrandName}}" />
-    <view class="form-buttons">
-      <button class="btn-primary" bindtap="confirmAddBrand" disabled="{{!newBrandName}}">保存</button>
-      <button class="btn-secondary" bindtap="cancelAdd">取消</button>
+  <view class="brand-list">
+    <view class="brand-card" wx:for="{{brands}}" wx:key="barcode">
+      <image class="card-image" src="{{item.bgImage}}" mode="aspectFill" wx:if="{{item.bgImage}}"></image>
+      <view class="card-overlay"></view>
+      <view class="card-content">
+        <view class="card-header">
+          <view class="brand-info">
+            <view class="brand-name">{{item.brandName}}</view>
+            <view class="brand-barcode">{{item.barcode}}</view>
+          </view>
+        </view>
+        <view class="card-footer">
+          <view class="delete-btn" bindtap="deleteBrand" data-barcode="{{item.barcode}}">
+            <text>删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{brands.length === 0}}">
+      暂无品牌\n点击右下角"+"添加
     </view>
   </view>
 
-  <view class="brand-list">
-    <view class="list-header">
-      <text class="text-secondary">已添加品牌 ({{brands.length}})</text>
-      <button class="add-btn" bindtap="showAddForm">+ 添加</button>
-    </view>
+  <view class="add-btn-fixed" bindtap="showAddOptions">+</view>
 
-    <view class="brand-item bg-surface" wx:for="{{brands}}" wx:key="barcode">
-      <view class="brand-info">
-        <text class="text-primary brand-name">{{item.brandName}}</text>
-        <text class="text-secondary barcode">{{item.barcode}}</text>
+  <view class="modal-mask" wx:if="{{showOptions}}" bindtap="closeOptions">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-title">添加品牌</view>
+      <view class="modal-options">
+        <view class="modal-option" bindtap="scanBarcode">
+          <text>📷</text>
+          <text>扫描二维码</text>
+        </view>
+        <view class="modal-option" bindtap="showManualInput">
+          <text>✏️</text>
+          <text>手动输入条码</text>
+        </view>
       </view>
-      <view class="delete-btn" bindtap="deleteBrand" data-barcode="{{item.barcode}}">
-        <text class="text-danger">删除</text>
+      <view class="modal-cancel" bindtap="closeOptions">
+        <text>取消</text>
       </view>
     </view>
+  </view>
 
-    <view class="empty-tip text-secondary" wx:if="{{brands.length === 0}}">
-      暂无品牌，点击上方添加
+  <view class="modal-mask" wx:if="{{showManual}}" bindtap="closeManual">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-title">输入条码</view>
+      <view class="form-section">
+        <input class="form-input" placeholder="请输入条码" placeholder-style="color: #8e8e93" bindinput="onBarcodeInput" value="{{tempBarcode}}"/>
+      </view>
+      <view class="form-buttons">
+        <button class="btn-secondary-form" bindtap="closeManual">取消</button>
+        <button class="btn-primary" bindtap="confirmBarcode">下一步</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="modal-mask" wx:if="{{showBrandForm}}" bindtap="closeBrandForm">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-title">完善品牌信息</view>
+      <view class="form-section">
+        <view class="form-label">条码</view>
+        <input class="form-input" value="{{tempBarcode}}" disabled placeholder-style="color: #8e8e93"/>
+      </view>
+      <view class="form-section">
+        <view class="form-label">品牌名称</view>
+        <input class="form-input" placeholder="请输入品牌名称" placeholder-style="color: #8e8e93" bindinput="onBrandNameInput" value="{{tempBrandName}}"/>
+      </view>
+      <view class="form-section">
+        <view class="form-label">卡片背景照片</view>
+        <view class="image-picker">
+          <view class="image-item" wx:if="{{tempBgImage}}">
+            <image src="{{tempBgImage}}" mode="aspectFill"/>
+          </view>
+          <view class="add-image-btn" bindtap="chooseImage" wx:if="{{!tempBgImage}}">+</view>
+        </view>
+      </view>
+      <view class="form-buttons">
+        <button class="btn-secondary-form" bindtap="closeBrandForm">取消</button>
+        <button class="btn-primary" bindtap="saveBrand" disabled="{{!tempBrandName}}">保存</button>
+      </view>
     </view>
   </view>
 </view>

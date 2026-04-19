@@ -62,3 +62,62 @@
 .brand-link {
   padding: 16px;
 }
+
+.brand-picker-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.brand-picker-content {
+  width: 100%;
+  max-height: 60vh;
+  background-color: #1c1c1e;
+  border-radius: 16px 16px 0 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close-btn {
+  font-size: 28px;
+  color: #8e8e93;
+  padding: 0 8px;
+}
+
+.brand-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.brand-item {
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.brand-item.selected {
+  background-color: #0a84ff;
+}
+
+.confirm-btn {
+  width: 100%;
+  margin-top: auto;
+}

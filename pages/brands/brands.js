@@ -1,21 +1,16 @@
 const storage = require('../../utils/storage.js');
 
+const AVATAR_COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#ff375f', '#bf5af2', '#64d2ff'];
+
 Page({
   data: {
     brands: [],
-    showAddForm: false,
-    newBarcode: '',
-    newBrandName: ''
-  },
-
-  onLoad(options) {
-    if (options.barcode && options.action === 'add') {
-      this.setData({
-        showAddForm: true,
-        newBarcode: options.barcode
-      });
-    }
-    this.loadBrands();
+    showOptions: false,
+    showManual: false,
+    showBrandForm: false,
+    tempBarcode: '',
+    tempBrandName: '',
+    tempBgImage: ''
   },
 
   onShow() {
@@ -24,48 +19,93 @@ Page({
 
   loadBrands() {
     const brands = storage.getBrands();
+    brands.forEach((b, i) => {
+      b.avatarColor = AVATAR_COLORS[i % AVATAR_COLORS.length];
+    });
     this.setData({ brands });
   },
 
-  showAddForm() {
+  showAddOptions() {
+    this.setData({ showOptions: true });
+  },
+
+  closeOptions() {
+    this.setData({ showOptions: false });
+  },
+
+  stopPropagation() {},
+
+  scanBarcode() {
+    this.setData({ showOptions: false });
+    wx.scanCode({
+      success: (res) => {
+        this.setData({
+          tempBarcode: res.result,
+          showBrandForm: true
+        });
+      },
+      fail: () => {
+        wx.showToast({ title: '扫描失败', icon: 'none' });
+      }
+    });
+  },
+
+  showManualInput() {
+    this.setData({ showOptions: false, showManual: true });
+  },
+
+  closeManual() {
+    this.setData({ showManual: false, tempBarcode: '' });
+  },
+
+  onBarcodeInput(e) {
+    this.setData({ tempBarcode: e.detail.value });
+  },
+
+  confirmBarcode() {
+    if (!this.data.tempBarcode) return;
+    this.setData({ showManual: false, showBrandForm: true });
+  },
+
+  closeBrandForm() {
     this.setData({
-      showAddForm: true,
-      newBarcode: '',
-      newBrandName: ''
+      showBrandForm: false,
+      tempBarcode: '',
+      tempBrandName: '',
+      tempBgImage: ''
     });
   },
 
   onBrandNameInput(e) {
-    this.setData({ newBrandName: e.detail.value });
+    this.setData({ tempBrandName: e.detail.value });
   },
 
-  confirmAddBrand() {
-    const { newBarcode, newBrandName } = this.data;
-    if (!newBrandName) return;
+  chooseImage() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['camera', 'album'],
+      success: (res) => {
+        this.setData({ tempBgImage: res.tempFilePaths[0] });
+      }
+    });
+  },
 
-    if (newBarcode) {
-      storage.addBrand(newBarcode, newBrandName);
-    } else {
-      const barcode = Date.now().toString();
-      storage.addBrand(barcode, newBrandName);
-    }
+  saveBrand() {
+    const { tempBarcode, tempBrandName, tempBgImage } = this.data;
+    if (!tempBrandName) return;
+
+    storage.addBrand(tempBarcode, tempBrandName, tempBgImage);
 
     this.setData({
-      showAddForm: false,
-      newBarcode: '',
-      newBrandName: ''
+      showBrandForm: false,
+      tempBarcode: '',
+      tempBrandName: '',
+      tempBgImage: ''
     });
 
     this.loadBrands();
     wx.showToast({ title: '已添加', icon: 'success' });
-  },
-
-  cancelAdd() {
-    this.setData({
-      showAddForm: false,
-      newBarcode: '',
-      newBrandName: ''
-    });
   },
 
   deleteBrand(e) {

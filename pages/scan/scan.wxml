@@ -1,28 +1,6 @@
 <view class="container">
-  <view class="scan-area" wx:if="{{!scanResult && !showConfirm}}">
-    <view class="scan-tip">点击下方按钮开始扫码</view>
-    <button class="btn-primary" bindtap="handleScan" loading="{{scanning}}">
-      {{scanning ? '扫描中...' : '开始扫码'}}
-    </button>
-  </view>
-
-  <view class="confirm-area" wx:if="{{showConfirm}}">
-    <view class="brand-info bg-surface">
-      <text class="text-primary brand-name">{{matchedBrand.brandName}}</text>
-      <text class="text-secondary barcode">{{matchedBrand.barcode}}</text>
-    </view>
-    <view class="confirm-tip text-secondary">确认使用此品牌记录？</view>
-    <view class="confirm-buttons">
-      <button class="btn-primary" bindtap="confirmRecord">确认</button>
-      <button class="btn-secondary" bindtap="cancelScan">取消</button>
-    </view>
-  </view>
-
-  <view class="no-match" wx:if="{{showNoMatch}}">
-    <view class="no-match-text text-secondary">未找到匹配品牌</view>
-    <view class="no-match-buttons">
-      <button class="btn-primary" bindtap="goToAddBrand">添加品牌</button>
-      <button class="btn-secondary" bindtap="recordAsUnknown">记为未知</button>
-    </view>
+  <view class="scan-area">
+    <view class="scan-tip text-secondary">正在扫描...</view>
+    <view class="scan-icon">📷</view>
   </view>
 </view>

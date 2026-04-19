@@ -4,11 +4,23 @@ Page({
   data: {
     todayCount: 0,
     lastSmokingTime: '--:--',
-    avgInterval: '--'
+    avgInterval: '--',
+    showBrandPicker: false,
+    brands: [],
+    selectedBrand: null
   },
 
   onShow() {
     this.updateTodayStats();
+  },
+
+  onLoad() {
+    this.loadBrands();
+  },
+
+  loadBrands() {
+    const brands = storage.getBrands();
+    this.setData({ brands });
   },
 
   updateTodayStats() {
@@ -43,10 +55,41 @@ Page({
   },
 
   handleManualRecord() {
-    const record = storage.addRecord({
+    this.loadBrands();
+    this.setData({
+      showBrandPicker: true,
+      selectedBrand: null
+    });
+  },
+
+  closeBrandPicker() {
+    this.setData({
+      showBrandPicker: false,
+      selectedBrand: null
+    });
+  },
+
+  stopPropagation() {},
+
+  selectBrand(e) {
+    this.setData({
+      selectedBrand: e.currentTarget.dataset.brand
+    });
+  },
+
+  confirmRecord() {
+    const { selectedBrand } = this.data;
+    if (!selectedBrand) return;
+
+    storage.addRecord({
+      brandId: selectedBrand.barcode,
+      brandName: selectedBrand.brandName,
       type: 'manual'
     });
+
+    this.setData({ showBrandPicker: false, selectedBrand: null });
     this.updateTodayStats();
+
     wx.showToast({
       title: '已记录',
       icon: 'success'
@@ -54,14 +97,36 @@ Page({
   },
 
   handleScan() {
-    wx.navigateTo({
-      url: '/pages/scan/scan'
+    wx.scanCode({
+      success: (res) => {
+        this.handleScanResult(res.result);
+      },
+      fail: (err) => {
+        if (!err.errMsg.includes('cancel')) {
+          wx.showToast({
+            title: '扫描失败',
+            icon: 'none'
+          });
+        }
+      }
     });
   },
 
-  goToBrands() {
-    wx.navigateTo({
-      url: '/pages/brands/brands'
+  handleScanResult(barcode) {
+    const brand = storage.findBrandByBarcode(barcode);
+    const brandName = brand ? brand.brandName : '未知品牌';
+    const brandId = brand ? brand.barcode : '';
+
+    storage.addRecord({
+      brandId: brandId,
+      brandName: brandName,
+      type: 'scan'
+    });
+
+    this.updateTodayStats();
+    wx.showToast({
+      title: '已记录',
+      icon: 'success'
     });
   }
 });

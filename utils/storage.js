@@ -30,10 +30,11 @@ function findBrandByBarcode(barcode) {
  * 添加品牌
  * @param {string} barcode 条码
  * @param {string} brandName 品牌名
+ * @param {string} bgImage 背景图片路径
  */
-function addBrand(barcode, brandName) {
+function addBrand(barcode, brandName, bgImage) {
   const brands = getBrands();
-  brands.push({ barcode, brandName });
+  brands.push({ barcode, brandName, bgImage: bgImage || '' });
   wx.setStorageSync('brands', brands);
 }
 
